@@ -36,7 +36,7 @@ public abstract class AppDelegate implements IDelegate {
     }
 
     @Override
-    public Toolbar getToobar() {
+    public Toolbar getToolbar() {
         return null;
     }
 

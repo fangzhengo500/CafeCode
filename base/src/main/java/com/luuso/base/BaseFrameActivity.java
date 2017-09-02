@@ -1,53 +1,48 @@
-package com.luuso.cafecode.activity;
+package com.luuso.base;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.luuso.cafecode.R;
 import com.luuso.framework.presenter.ActivityPresenter;
 import com.luuso.framework.view.IDelegate;
 
 /**
  * @project： CafeCode
- * @package： com.luuso.cafecode
+ * @package： com.luuso.base
  * @class: BaseFrameActivity
  * @author: 陆伟
- * @Date: 2017/8/27 19:12
- * @desc： Activity基类
+ * @Date: 2017/9/2 14:00
+ * @desc： TODO
  */
 
 public abstract class BaseFrameActivity<T extends IDelegate> extends ActivityPresenter<T> {
-    protected Context mContext;
     protected LinearLayout rootView;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        mContext = this;
-        rootView = new LinearLayout(mContext);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        rootView = new LinearLayout(this);
         rootView.setOrientation(LinearLayout.VERTICAL);
         super.onCreate(savedInstanceState);
         super.setContentView(rootView);
     }
 
     @Override
-    protected void initToobar() {
-        Toolbar toobar = viewDelegate.getToolbar();
-        if (toobar == null) {
-            toobar = (Toolbar) View.inflate(mContext, R.layout.base_toolbar, null);
-            rootView.addView(toobar, 0);
+    protected void initToolbar() {
+        Toolbar toolbar = viewDelegate.getToolbar();
+        if (toolbar == null) {
+            toolbar = (Toolbar) View.inflate(this, R.layout.base_toolbar, null);
+            rootView.addView(toolbar, 0);
         }
-        setSupportActionBar(toobar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        setContentView(View.inflate(mContext, layoutResID, null));
+    public void setContentView(int layoutId) {
+        setContentView(View.inflate(this, layoutId, null));
     }
 
     @Override

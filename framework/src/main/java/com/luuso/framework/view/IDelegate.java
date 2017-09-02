@@ -21,7 +21,7 @@ public interface IDelegate {
 
     int getOptionsMenuId();
 
-    Toolbar getToobar();
+    Toolbar getToolbar();
 
     View getRootView();
 

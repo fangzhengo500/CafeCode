@@ -34,7 +34,7 @@ public class MainDelegate extends AppDelegate {
     }
 
     @Override
-    public Toolbar getToobar() {
+    public Toolbar getToolbar() {
         mToolbar = getView(R.id.toolbar);
         if (mToolbar == null) {
             throw new NullPointerException("Must include Toolbar and define @+id/toolbar." +
