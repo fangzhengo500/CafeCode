@@ -38,7 +38,7 @@ public class MainDelegate extends AppDelegate {
         mToolbar = getView(R.id.toolbar);
         if (mToolbar == null) {
             throw new NullPointerException("Must include Toolbar and define @+id/toolbar." +
-                    " You can get @layout/base_toolbar");
+                    " You can newViewHolder @layout/base_toolbar");
         }
         return mToolbar;
     }
