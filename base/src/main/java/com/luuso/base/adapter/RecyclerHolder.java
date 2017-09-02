@@ -2,6 +2,7 @@ package com.luuso.base.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,40 +11,37 @@ import android.widget.TextView;
 /**
  * @project： CafeCode
  * @package： com.luuso.base.adapter
- * @class: ListHolder
+ * @class: RecyclerHolder
  * @author: 陆伟
- * @Date: 2017/9/2 18:40
+ * @Date: 2017/9/2 21:03
  * @desc： TODO
  */
 
-public class ListHolder implements IViewHolder {
+public class RecyclerHolder extends RecyclerView.ViewHolder implements IViewHolder {
     private final SparseArray<View> mViews;
-    private final View itemVie;
 
-    private ListHolder(View itemView) {
-        mViews = new SparseArray<View>(8);
-        itemVie = itemView;
+
+    public RecyclerHolder(View itemView) {
+        super(itemView);
+        this.mViews = new SparseArray<>(8);
     }
 
-
-    public static ListHolder newViewHolder(View itemView) {
-        return new ListHolder(itemView);
+    @Override
+    public View getItemView() {
+        return itemView;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T extends View> T getView(int id) {
         View view = mViews.get(id);
         if (view == null) {
-            view = itemVie.findViewById(id);
+            view = itemView.findViewById(id);
             mViews.put(id, view);
         }
         return (T) view;
     }
 
-    @Override
-    public View getItemView() {
-        return itemVie;
-    }
 
     @Override
     public IViewHolder setText(int id, CharSequence text) {
@@ -90,4 +88,3 @@ public class ListHolder implements IViewHolder {
         return this;
     }
 }
-

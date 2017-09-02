@@ -21,7 +21,7 @@ import java.util.Set;
  * @desc： 对ViewHolder的封装，以及更方便的控制ListView滑动过程中不加载图片
  */
 
-public class BaseListAdapter<T> extends BaseAdapter implements
+public abstract class BaseListAdapter<T> extends BaseAdapter implements
         AbsListView.OnScrollListener {
 
     protected Collection<T> mDatas;
@@ -93,13 +93,9 @@ public class BaseListAdapter<T> extends BaseAdapter implements
         return convertView;
     }
 
-    public void convert(IViewHolder helper, T item, boolean isScrolling) {
 
-    }
-
-    public void convert(IViewHolder helper, T item, int position, boolean isScrolling) {
-        convert(helper, getItem(position), isScrolling);
-    }
+    public abstract void convert(IViewHolder helper, T item, int position,
+                                 boolean isScrolling);
 
 
     @Override
